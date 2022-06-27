@@ -15,8 +15,8 @@ separating them by priority (light, normal, medium, high), and then delete or co
 </p>
 
 <p align="center">
-  <img src="./.github/assets/app-1.png" width="300px">
-  <img src="./.github/assets/app-2.png" width="300px">
+  <img src="./.github/assets/readme-img-1.png" width="300px">
+  <img src="./.github/assets/readme-img-2.png" width="300px">
 </p>
 
 <h2 id="tech">Technologies</h2>
