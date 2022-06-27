@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import uniqid from 'uniqid';
+import { LocalStorageService } from './local-storage.service';
 
 interface ToDo {
   title: string;
@@ -14,11 +15,17 @@ interface ToDo {
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   isDone: boolean = true;
   todoList: ToDo[] = [];
   title: string = "";
   type: 'normal' | 'important' | 'medium' | 'light' = 'normal';
+
+  constructor(private localStorageService: LocalStorageService<ToDo>){}
+
+  ngOnInit(){
+    this.todoList = this.localStorageService.getItem('todoList')
+  }
 
   handleItemComplete(id: string){
     this.todoList = this.todoList.map(todo => {
@@ -30,10 +37,12 @@ export class AppComponent {
       }
       return todo
     })
+    this.localStorageService.setItem('todoList', this.todoList)
   }
 
   handleItemDelete(id: string){
     this.todoList = this.todoList.filter(todo => todo.id != id)
+    this.localStorageService.setItem('todoList', this.todoList)
   }
 
   resetForm(){
@@ -49,6 +58,7 @@ export class AppComponent {
       isDone: false,
       id: uniqid()
     })
+    this.localStorageService.setItem('todoList', this.todoList)
     this.resetForm()
   }
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
+import { LocalStorageService } from './local-storage.service';
 
 @NgModule({
   declarations: [
@@ -11,10 +12,12 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
     TodoItemComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    LocalStorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
