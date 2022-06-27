@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import uniqid from 'uniqid';
 
 interface ToDo {
   title: string;
@@ -15,12 +16,9 @@ interface ToDo {
 
 export class AppComponent {
   isDone: boolean = true;
-  todoList: ToDo[] = [{
-    title: 'Lavar roupa',
-    type: 'normal',
-    isDone: false,
-    id: '3334'
-  }]
+  todoList: ToDo[] = [];
+  title: string = "";
+  type: 'normal' | 'important' | 'medium' | 'light' = "normal";
 
   handleItemComplete(id: string){
     this.todoList = this.todoList.map(todo => {
@@ -36,5 +34,15 @@ export class AppComponent {
 
   handleItemDelete(id: string){
     this.todoList = this.todoList.filter(todo => todo.id != id)
+  }
+
+  handleSubmit(event: SubmitEvent){
+    event.preventDefault()
+    this.todoList.push({
+      title: this.title,
+      type: this.type,
+      isDone: false,
+      id: uniqid()
+    })
   }
 }

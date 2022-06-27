@@ -12,5 +12,21 @@
     >
     </todo-item>
   </ul>
+  <form (submit)="handleSubmit($event)" class="forms">
+    <input
+      name="title"
+      class="{{ type }}"
+      type="text"
+      placeholder="Adicionar uma tarefa"
+      [(ngModel)]="title"
+    />
+    <select name="type" [(ngModel)]="type" class="{{ type }}">
+      <option value="light" default selected>Baixa</option>
+      <option value="normal">Normal</option>
+      <option value="medium">Médio</option>
+      <option value="important">Importante</option>
+    </select>
+    <button>+</button>
+  </form>
 </div>
 
