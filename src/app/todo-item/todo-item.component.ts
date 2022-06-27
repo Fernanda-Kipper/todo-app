@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'todo-item',
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.scss']
 })
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent {
 
   @Input() title: string= '';
   @Input() type: string = 'normal';
@@ -14,20 +14,14 @@ export class TodoItemComponent implements OnInit {
 
   @Output() onDelete = new EventEmitter();
   @Output() onComplete = new EventEmitter();
+  @Output() onIncomplete = new EventEmitter();
 
   handleClickCheck(){
-    this.onComplete.emit(this.id)
+    if(!this.isDone) this.onComplete.emit(this.id)
+    else this.onIncomplete.emit(this.id)
   }
 
   handleClickDelete(){
     this.onDelete.emit(this.id)
   }
-
-  constructor() {
-
-  }
-
-  ngOnInit(): void {
-  }
-
 }

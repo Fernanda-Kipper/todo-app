@@ -27,6 +27,16 @@
 
   .todo {
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    span {
+      margin-bottom: 16px;
+      padding: 8px 16px;
+      background-color: var(--color-background-secondary);
+      border-radius: 8px;
+    }
   }
 }
 

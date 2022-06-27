@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import uniqid from 'uniqid';
+
 import { LocalStorageService } from './local-storage.service';
 
 interface ToDo {
@@ -18,6 +19,7 @@ interface ToDo {
 export class AppComponent implements OnInit {
   isDone: boolean = true;
   todoList: ToDo[] = [];
+  completeList: ToDo[] = [];
   title: string = "";
   type: 'normal' | 'important' | 'medium' | 'light' = 'normal';
 
@@ -25,19 +27,38 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.todoList = this.localStorageService.getItem('todoList')
+    this.completeList = this.localStorageService.getItem('completeList')
+  }
+
+  updateLocalStorage(){
+    this.localStorageService.setItem('completeList', this.completeList)
+    this.localStorageService.setItem('todoList', this.todoList)
   }
 
   handleItemComplete(id: string){
-    this.todoList = this.todoList.map(todo => {
-      if(todo.id === id){
-        return ({
-          ...todo,
-          isDone: !todo.isDone
-        })
-      }
-      return todo
-    })
-    this.localStorageService.setItem('todoList', this.todoList)
+    let item = this.todoList.find(item => item.id === id)
+    this.todoList = this.todoList.filter(item => item.id !== id)
+    if(item){
+      this.completeList = [{
+        ...item,
+        isDone: true
+      }, ...this.completeList]
+    }
+
+    this.updateLocalStorage()
+  }
+
+  handleItemIncomplete(id: string){
+    let item = this.completeList.find(item => item.id === id)
+    this.completeList = this.completeList.filter(item => item.id !== id)
+    if(item){
+      this.todoList = [{
+        ...item,
+        isDone: false
+      }, ...this.todoList]
+    }
+
+    this.updateLocalStorage()
   }
 
   handleItemDelete(id: string){

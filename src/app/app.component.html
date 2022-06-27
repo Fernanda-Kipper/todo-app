@@ -9,9 +9,26 @@
       [type]="item.type"
       (onComplete)="handleItemComplete($event)"
       (onDelete)="handleItemDelete($event)"
+      (onIncomplete)="handleItemIncomplete($event)"
     >
     </todo-item>
   </ul>
+  <div *ngIf="completeList.length" class="todo">
+    <span>Concluídas</span>
+    <ul class="todo">
+        <todo-item *ngFor="let item of completeList"
+        [title]="item.title"
+        class="todo"
+        [isDone]="item.isDone"
+        [id]="item.id"
+        [type]="item.type"
+        (onComplete)="handleItemComplete($event)"
+        (onDelete)="handleItemDelete($event)"
+        (onIncomplete)="handleItemIncomplete($event)"
+      >
+      </todo-item>
+    </ul>
+  </div>
   <form (submit)="handleSubmit($event)" class="forms">
     <input
       name="title"
