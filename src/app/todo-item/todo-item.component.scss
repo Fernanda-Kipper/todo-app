@@ -1,5 +1,4 @@
 .todo-item {
-  color: white;
   background-color: var(--color-secondary-blue);
 
   display: flex;
@@ -27,6 +26,7 @@
 
   p {
     font-size: 20px;
+    color: var(--color-background-primary);
   }
 
   .checkbox{
