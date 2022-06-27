@@ -16,11 +16,14 @@
     font-size: 32px;
   }
 
-  ul {
+  ul, .lists {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .lists {
     max-height: 75vh;
     overflow: auto;
   }

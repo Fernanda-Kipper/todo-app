@@ -1,24 +1,10 @@
 <div class="container">
   <h1>Todo App</h1>
-  <ul>
-    <todo-item *ngFor="let item of todoList"
-      class="todo"
-      [title]="item.title"
-      [isDone]="item.isDone"
-      [id]="item.id"
-      [type]="item.type"
-      (onComplete)="handleItemComplete($event)"
-      (onDelete)="handleItemDelete($event)"
-      (onIncomplete)="handleItemIncomplete($event)"
-    >
-    </todo-item>
-  </ul>
-  <div *ngIf="completeList.length" class="todo">
-    <span>Concluídas</span>
-    <ul class="todo">
-        <todo-item *ngFor="let item of completeList"
-        [title]="item.title"
+  <div class="lists">
+    <ul>
+      <todo-item *ngFor="let item of todoList"
         class="todo"
+        [title]="item.title"
         [isDone]="item.isDone"
         [id]="item.id"
         [type]="item.type"
@@ -28,6 +14,22 @@
       >
       </todo-item>
     </ul>
+    <div *ngIf="completeList.length" class="todo">
+      <span>Concluídas</span>
+      <ul class="todo">
+          <todo-item *ngFor="let item of completeList"
+          [title]="item.title"
+          class="todo"
+          [isDone]="item.isDone"
+          [id]="item.id"
+          [type]="item.type"
+          (onComplete)="handleItemComplete($event)"
+          (onDelete)="handleItemDelete($event)"
+          (onIncomplete)="handleItemIncomplete($event)"
+        >
+        </todo-item>
+      </ul>
+    </div>
   </div>
   <form (submit)="handleSubmit($event)" class="forms">
     <input
