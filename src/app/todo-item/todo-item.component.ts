@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'todo-item',
@@ -8,6 +8,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TodoItemComponent implements OnInit {
 
   @Input() title: string= '';
+  @Input() type: string = 'normal';
+  @Input() isDone: boolean = false;
+  @Input() id: string = '';
+
+  onDelete = new EventEmitter();
+  onComplete = new EventEmitter();
+
+  handleClickCheck(){
+    this.onComplete.emit(this.id)
+  }
+
+  handleClickDelete(){
+    this.onDelete.emit(this.id)
+  }
 
   constructor() {
 

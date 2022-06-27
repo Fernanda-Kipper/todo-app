@@ -1,11 +1,29 @@
 .container {
   min-height: 100vh;
   width: 100%;
+  padding: 24px;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
 
   background-color: var(--color-background-primary);
   color: white;
+
+  h1 {
+    margin-bottom: 32px;
+    font-size: 32px;
+  }
+
+  ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .todo {
+    width: 100%;
+  }
 }
