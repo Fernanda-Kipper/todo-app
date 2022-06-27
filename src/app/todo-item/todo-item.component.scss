@@ -54,6 +54,12 @@
   }
 
   &.done {
+    opacity: 0.8;
+
+    p {
+      text-decoration: line-through;
+    }
+
     .checkbox {
       background-color: var(--color-background-secondary);
     }
