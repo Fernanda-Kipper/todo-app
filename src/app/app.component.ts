@@ -36,6 +36,11 @@ export class AppComponent {
     this.todoList = this.todoList.filter(todo => todo.id != id)
   }
 
+  resetForm(){
+    this.type = 'normal'
+    this.title = ''
+  }
+
   handleSubmit(event: SubmitEvent){
     event.preventDefault()
     this.todoList.push({
@@ -44,5 +49,6 @@ export class AppComponent {
       isDone: false,
       id: uniqid()
     })
+    this.resetForm()
   }
 }
