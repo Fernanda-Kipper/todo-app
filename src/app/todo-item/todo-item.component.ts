@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'todo-item',
@@ -12,8 +12,8 @@ export class TodoItemComponent implements OnInit {
   @Input() isDone: boolean = false;
   @Input() id: string = '';
 
-  onDelete = new EventEmitter();
-  onComplete = new EventEmitter();
+  @Output() onDelete = new EventEmitter();
+  @Output() onComplete = new EventEmitter();
 
   handleClickCheck(){
     this.onComplete.emit(this.id)

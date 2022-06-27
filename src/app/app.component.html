@@ -1,7 +1,16 @@
 <div class="container">
   <h1>Todo App</h1>
   <ul>
-    <todo-item class="todo" title="Todo" [isDone]="isDone" id="12" type="important"></todo-item>
+    <todo-item *ngFor="let item of todoList"
+      class="todo"
+      [title]="item.title"
+      [isDone]="item.isDone"
+      [id]="item.id"
+      [type]="item.type"
+      (onComplete)="handleItemComplete($event)"
+      (onDelete)="handleItemDelete($event)"
+    >
+    </todo-item>
   </ul>
 </div>
 

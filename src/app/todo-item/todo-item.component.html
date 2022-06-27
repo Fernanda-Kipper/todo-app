@@ -1,7 +1,7 @@
 <li class="todo-item {{type}} {{isDone ? 'done' : ''}}">
   <div class="checkbox" (click)="handleClickCheck()"></div>
   <p>{{ title }}</p>
-  <button (click)="handleClickCheck()">
+  <button (click)="handleClickDelete()">
     <img alt="Lixo indicando deletar" src="../assets/delete-icon.svg"/>
   </button>
 </li>
