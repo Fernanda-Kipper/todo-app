@@ -18,7 +18,7 @@ export class AppComponent {
   isDone: boolean = true;
   todoList: ToDo[] = [];
   title: string = "";
-  type: 'normal' | 'important' | 'medium' | 'light' = "normal";
+  type: 'normal' | 'important' | 'medium' | 'light' = 'normal';
 
   handleItemComplete(id: string){
     this.todoList = this.todoList.map(todo => {
