@@ -1,4 +1,4 @@
-<li class="todo-item {{type}} {{isDone ? 'done' : ''}}">
+<li class="todo-item {{ type }} {{ isDone ? 'done' : '' }}">
   <div class="checkbox" (click)="handleClickCheck()"></div>
   <p>{{ title }}</p>
   <button (click)="handleClickDelete()">
