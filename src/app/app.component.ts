@@ -73,6 +73,7 @@ export class AppComponent implements OnInit {
 
   handleSubmit(event: SubmitEvent){
     event.preventDefault()
+    if(!this.title.trim().length) return
     this.todoList.push({
       title: this.title,
       type: this.type,
